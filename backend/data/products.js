@@ -6,6 +6,7 @@ const products = [
     category: 'Vietnamese Food',
     price: 12.99,
     status: true,
+    quantity: 10,
     rating: 4.5,
     numReviews: 12
   },
@@ -16,6 +17,7 @@ const products = [
     category: 'Chinese Food',
     price: 9.99,
     status: false,
+    quantity: 0,
     rating: 4.0,
     numReviews: 8
   },
@@ -26,6 +28,7 @@ const products = [
     category: 'Italian Food',
     price: 10.99,
     status: true,
+    quantity: 10,
     rating: 3,
     numReviews: 12
   },
@@ -36,6 +39,7 @@ const products = [
     category: 'Canadian Food',
     price: 15.99,
     status: true,
+    quantity: 10,
     rating: 5,
     numReviews: 12
   },
@@ -46,6 +50,7 @@ const products = [
     category: 'Mexico Food',
     price: 10.99,
     status: true,
+    quantity: 10,
     rating: 3.5,
     numReviews: 10
   },
@@ -56,6 +61,7 @@ const products = [
     category: 'Vegetarian Food',
     price: 9.99,
     status: false,
+    quantity: 0,
     rating: 4,
     numReviews: 12
   }

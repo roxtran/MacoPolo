@@ -51,9 +51,14 @@ const productSchema = mongoose.Schema(
       default: 0
     },
     status: {
-      type: Number,
+      type: Boolean,
       required: true,
       default: true
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
   {
