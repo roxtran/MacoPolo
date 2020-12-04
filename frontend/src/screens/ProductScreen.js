@@ -53,6 +53,9 @@ const ProductScreen = ({ history, match }) => {
               <ListGroup.Item>
                 Description: {product.description}
               </ListGroup.Item>
+              <ListGroup.Item>
+                <span className='text-danger'>{product.notice}</span>
+              </ListGroup.Item>
             </ListGroup>
           </Col>
           <Col>
@@ -72,7 +75,6 @@ const ProductScreen = ({ history, match }) => {
                     <Col>{product.status ? 'Available' : 'Not Available'}</Col>
                   </Row>
                 </ListGroup.Item>
-
                 {product.quantity > 0 && (
                   <ListGroup.Item>
                     <Row>
@@ -93,7 +95,6 @@ const ProductScreen = ({ history, match }) => {
                     </Row>
                   </ListGroup.Item>
                 )}
-
                 <ListGroup.Item>
                   <Button
                     onClick={addToCartHandler}
