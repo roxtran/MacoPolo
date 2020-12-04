@@ -144,7 +144,7 @@ const ProfileScreen = ({ location, history }) => {
                   </td>
                   <td className='align-middle'>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button variant='light'>Details</Button>
+                      <Button variant='dark'>Details</Button>
                     </LinkContainer>
                   </td>
                 </tr>
