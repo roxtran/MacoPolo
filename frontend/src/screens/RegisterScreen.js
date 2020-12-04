@@ -56,7 +56,7 @@ const RegisterScreen = ({ location, history }) => {
         <Form.Group controlId='email'>
           <Form.Label>Email</Form.Label>
           <Form.Control
-            type='text'
+            type='email'
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
