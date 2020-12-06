@@ -50,11 +50,6 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0
     },
-    status: {
-      type: Boolean,
-      required: true,
-      default: true
-    },
     quantity: {
       type: Number,
       required: true,

@@ -74,7 +74,9 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup.Item>
                   <Row>
                     <Col>Status:</Col>
-                    <Col>{product.status ? 'Available' : 'Not Available'}</Col>
+                    <Col>
+                      {product.quantity === 0 ? 'Not Available' : 'Available'}
+                    </Col>
                   </Row>
                 </ListGroup.Item>
                 {product.quantity > 0 && (
