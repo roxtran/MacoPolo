@@ -24,7 +24,7 @@ const UserEditScreen = ({ match, history }) => {
   const {
     loading: loadingUpdate,
     error: errorUpdate,
-    successs: successUpdate
+    success: successUpdate
   } = userUpdate
 
   useEffect(() => {
@@ -40,13 +40,12 @@ const UserEditScreen = ({ match, history }) => {
         setIsAdmin(user.isAdmin)
       }
     }
-  }, [dispatch, user, userId, successUpdate, history])
+  }, [dispatch, history, userId, user, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(updateUser({ _id: userId, name, email, isAdmin }))
   }
-
   return (
     <>
       <Link to='/admin/userlist' className='btn btn-dark my-3'>
@@ -65,14 +64,14 @@ const UserEditScreen = ({ match, history }) => {
             <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type='text'
+                type='name'
                 placeholder='Enter name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='email'>
-              <Form.Label>Email</Form.Label>
+              <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
                 placeholder='Enter email'

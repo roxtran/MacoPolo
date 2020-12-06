@@ -1,26 +1,22 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button, Row, Col } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProducts, deleteProduct } from '../actions/productActions'
 
-const ProductListScreen = ({ history, match }) => {
+const ProductListScreen = ({ history }) => {
   const dispatch = useDispatch()
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
   const productList = useSelector((state) => state.productList)
   const { loading, error, products } = productList
 
   const productDelete = useSelector((state) => state.productDelete)
-  const {
-    loading: loadingDelete,
-    error: errorDelete,
-    success: successDelete
-  } = productDelete
-
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const { success: successDelete } = productDelete
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -28,7 +24,7 @@ const ProductListScreen = ({ history, match }) => {
     } else {
       history.push('/login')
     }
-  }, [dispatch, history, userInfo, successDelete])
+  }, [userInfo, dispatch, history, successDelete])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
@@ -36,26 +32,9 @@ const ProductListScreen = ({ history, match }) => {
     }
   }
 
-  const createProductHandler = (product) => {
-    if (window.confirm('Are you sure?')) {
-      // dispatch(deleteUser(id))
-    }
-  }
-
   return (
     <>
-      <Row className='align-items-center'>
-        <Col>
-          <h1>Products</h1>
-        </Col>
-        <Col className='text-right'>
-          <Button className='my-3' onClick={createProductHandler}>
-            <i className='fas fa-plus'></i> Create a Product
-          </Button>
-        </Col>
-      </Row>
-      {loadingDelete && <Loader />}
-      {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+      <h1>Products</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -74,10 +53,10 @@ const ProductListScreen = ({ history, match }) => {
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td className='align-middle'>{product._id}</td>
-                <td className='align-middle'>{product.name}</td>
-                <td className='align-middle'>${product.price}</td>
-                <td className='align-middle'>{product.category}</td>
+                <td>{product._id}</td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.category}</td>
                 <td>
                   <LinkContainer to={`/admin/product/${product._id}/edit`}>
                     <Button variant='dark' className='btn mr-2'>

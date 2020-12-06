@@ -9,11 +9,11 @@ import { listUsers, deleteUser } from '../actions/userActions'
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch()
 
-  const userList = useSelector((state) => state.userList)
-  const { loading, error, users } = userList
-
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const userList = useSelector((state) => state.userList)
+  const { loading, error, users } = userList
 
   const userDelete = useSelector((state) => state.userDelete)
   const { success: successDelete } = userDelete
@@ -24,7 +24,7 @@ const UserListScreen = ({ history }) => {
     } else {
       history.push('/login')
     }
-  }, [dispatch, history, userInfo, successDelete])
+  }, [userInfo, dispatch, history, successDelete])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
