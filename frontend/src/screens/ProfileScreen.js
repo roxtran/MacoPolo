@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { listMyOrders } from '../actions/orderActions'
+import { ORDER_PAY_RESET } from '../constants/orderConstants'
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -127,7 +128,7 @@ const ProfileScreen = ({ location, history }) => {
                   <td className='align-middle'>
                     {order.createdAt.substring(0, 10)}
                   </td>
-                  <td className='align-middle'>{order.totalPrice}</td>
+                  <td className='align-middle'>${order.totalPrice}</td>
                   <td className='align-middle'>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
@@ -144,7 +145,12 @@ const ProfileScreen = ({ location, history }) => {
                   </td>
                   <td className='align-middle'>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button variant='dark'>Details</Button>
+                      <Button
+                        variant='dark'
+                        onClick={dispatch({ type: ORDER_PAY_RESET })}
+                      >
+                        Details
+                      </Button>
                     </LinkContainer>
                   </td>
                 </tr>
