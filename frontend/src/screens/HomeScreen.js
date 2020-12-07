@@ -18,7 +18,7 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h1>Menu for Next Week</h1>
+      <h1>Menu for Tomorrow</h1>
       {loading ? (
         <Loader />
       ) : error ? (
